@@ -1,107 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>eTest</title>
-    <style>
-        /* Reset margin and padding for the body */
-        body {
-            margin: 0;
-            overflow: hidden;
-            background-color: #f0f0f0;
-            font-family: Arial, sans-serif;
+<script>
+    // Show the loading indicator as soon as script runs
+    document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById("loadingIndicator").style.display = 'block';
+    });
+
+    window.onload = function () {
+        const code = prompt("Enter the access code:");
+
+        if (code === "willyhalverson") {
+            openEmbed();
+        } else {
+            alert("Invalid code. Access denied.");
         }
+    };
 
-        /* Game embed style */
-        #gameEmbed {
-            width: 100vw;
-            height: 100vh;
-            border: none;
-            display: none; /* Initially hidden */
-        }
+    function openEmbed() {
+        const embed = document.getElementById("gameEmbed");
+        const loadingIndicator = document.getElementById("loadingIndicator");
 
-        /* Button style */
-        #openUrlButton {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            display: none; /* Initially hidden */
-            z-index: 10;
-        }
+        // Show the embed and wait for it to load
+        embed.style.display = 'block';
 
-        /* Button hover effect */
-        #openUrlButton:hover {
-            background-color: #0056b3;
-        }
-
-        /* Loading indicator (optional) */
-        #loadingIndicator {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 24px;
-            color: #333;
-            display: none;
-        }
-    </style>
-</head>
-<body>
-    <!-- Loading indicator -->
-    <div id="loadingIndicator">Loading...</div>
-
-    <!-- Embed container, initially hidden -->
-    <embed id="gameEmbed" src="https://rocketbotroyale2.winterpixel.io" type="text/html" onload="showButton()" />
-
-    <!-- Button to open the URL -->
-    <button id="openUrlButton" onclick="openESPN()" aria-label="Open NBA scores on ESPN">Open NBA Scores</button>
-
-    <script>
-        // Handle page load event
-        window.onload = function () {
-            // Prompt for the access code
-            const code = prompt("Enter the access code:");
-
-            // Validate the code
-            if (code === "willyhalverson") {
-                openEmbed(); // If valid, show the embed
-            } else {
-                alert("Invalid code. Access denied.");
-            }
-        };
-
-        // Function to show the game embed after code validation
-        function openEmbed() {
-            const embed = document.getElementById("gameEmbed");
-            const loadingIndicator = document.getElementById("loadingIndicator");
-            loadingIndicator.style.display = 'none'; // Hide the loading text
-            embed.style.display = 'block'; // Show the embed element
-        }
-
-        // Function to display the button after embed loads
-        function showButton() {
-            const button = document.getElementById("openUrlButton");
-            button.style.display = 'block'; // Show the button
-        }
-
-        // Function to open the ESPN NBA scores page in a new tab
-        function openESPN() {
-            window.open("https://www.espn.com/nba/scoreboard", "_blank"); // Open the ESPN NBA scoreboard page
-        }
-
-        // Show the loading indicator until the embed is loaded
-        window.addEventListener('load', () => {
-            const loadingIndicator = document.getElementById("loadingIndicator");
-            loadingIndicator.style.display = 'block'; // Show the loading text
+        // Embed load event
+        embed.addEventListener('load', () => {
+            loadingIndicator.style.display = 'none'; // Hide the loading
+            showButton(); // Show the ESPN button
         });
-    </script>
-</body>
-</html>
+    }
+
+    function showButton() {
+        document.getElementById("openUrlButton").style.display = 'block';
+    }
+
+    function openESPN() {
+        window.open("https://www.espn.com/nba/scoreboard", "_blank");
+    }
+</script>

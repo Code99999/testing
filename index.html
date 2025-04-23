@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -53,10 +52,8 @@
             color: #333;
             display: none;
         }
-
     </style>
 </head>
-
 <body>
     <!-- Loading indicator -->
     <div id="loadingIndicator">Loading...</div>
@@ -65,7 +62,7 @@
     <embed id="gameEmbed" src="https://rocketbotroyale2.winterpixel.io" type="text/html" onload="showButton()" />
 
     <!-- Button to open the URL -->
-    <button id="openUrlButton" onclick="openUrl()" aria-label="Open game URL in new tab">Open Game URL</button>
+    <button id="openUrlButton" onclick="openESPN()" aria-label="Open NBA scores on ESPN">Open NBA Scores</button>
 
     <script>
         // Handle page load event
@@ -95,9 +92,9 @@
             button.style.display = 'block'; // Show the button
         }
 
-        // Function to open the URL in a new tab
-        function openUrl() {
-            window.open("https://espn.com", "_blank"); // Open the URL
+        // Function to open the ESPN NBA scores page in a new tab
+        function openESPN() {
+            window.open("https://www.espn.com/nba/scoreboard", "_blank"); // Open the ESPN NBA scoreboard page
         }
 
         // Show the loading indicator until the embed is loaded
@@ -107,6 +104,4 @@
         });
     </script>
 </body>
-
 </html>
-
